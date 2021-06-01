@@ -1,0 +1,14 @@
+.CatList {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  padding-top: 3rem;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.CatList ul {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+}

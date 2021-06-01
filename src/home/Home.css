@@ -1,3 +1,16 @@
 .Home {
-  
+  padding-top: 3rem;
+}
+
+.page-title {
+  font-family: 'Times New Roman', serif;
+  font-size: 3rem;
+  margin: 2rem;
+}
+
+.Home a {
+  text-decoration: underline;
+  font-size: 3rem;
+  color: black;
+  font-style: italic;
 }
