@@ -1,21 +1,48 @@
 import { Component } from 'react';
-import { addCat } from '../utils/famous-cats-api.js';
+import { addCat, getCat, getCats, updateCat } from '../utils/famous-cats-api.js';
 import './AddPage.css';
 
 export default class AddPage extends Component {
   state = {
+    id: 0,
     name: '',
     type: '',
     url: '',
     year: 0,
-    lives: 0,
-    isSidekick: false
+    lives: 9,
+    isSidekick: false,
+    allTypes: [],
+    cat: null
   };
+
+  async componentDidMount() {
+    try {
+      const catState = {};
+      
+      catState.allTypes = [];
+      (await getCats()).forEach(cat => {
+        if (!catState.allTypes.includes(cat.type)) catState.allTypes.push(cat.type);
+      });
+
+      if (this.props.match.params.id) this.setState(await getCat(Number(this.props.match.params.id)));
+
+      this.setState(catState);
+    }
+    catch (err) {
+      console.log(err);
+      this.props.history.push('/');
+    }
+  }
 
   onSubmit = async e => {
     e.preventDefault();
-    await addCat(this.state);
-    this.props.history.push('/cats/');
+    if (!this.state.id) {
+      await addCat(this.state);
+      this.props.history.push('/cats/');
+    } else {
+      await updateCat(this.state);
+      this.props.history.push('/cats/');
+    }
   }
 
   onChange = e => {
@@ -26,51 +53,55 @@ export default class AddPage extends Component {
         obj[e.target.name] = Number(e.target.value);
         this.setState(obj);
         break;
-      case ('text'):
-        obj[e.target.name] = e.target.value;
-        this.setState(obj);
-        break;
       case ('checkbox'):
         obj[e.target.name] = e.target.checked;
         this.setState(obj);
         break;
+      case ('text'):
       default:
-        console.log('hello');
+        obj[e.target.name] = e.target.value;
+        this.setState(obj);
     }
   }
 
   render() {
+    const cat = this.state;
     return (
-      <form onSubmit={this.onSubmit} className="AddPage">
-        <h2 className="page-title">Add a New Cat</h2>
-        <fieldset>
-          <label>
-            name:
-            <input onChange={this.onChange} name="name" type="text" required />
-          </label>
-          <label>
-            type:
-            <input onChange={this.onChange} name="type" type="text" required />
-          </label>
-          <label>
-            image:
-            <input onChange={this.onChange} name="url" type="text" required />
-          </label>
-          <label>
-            year:
-            <input onChange={this.onChange} name="year" defaultValue="1996" type="number" />
-          </label>
-          <label>
-            lives:
-            <input onChange={this.onChange} name="lives" type="number" min="0" max="9" defaultValue="9" />
-          </label>
-          <label>
-            sidekick?:
-          </label>
-        </fieldset>
-        <button type="submit">Add</button>
-        
-      </form>
+      <div className="AddPage">
+        <form onSubmit={this.onSubmit} className="AddForm">
+          <h2 className="page-title">{(this.state.id) ? 'Edit' : 'Add'} a cat</h2>
+          <fieldset>
+            <label>
+              name:
+              <input onChange={this.onChange} name="name" type="text" defaultValue={cat.name} required />
+            </label>
+            <label>
+              type:
+              <select onChange={this.onChange} name="type" type="text" defaultValue={cat.type}>
+                {this.state.allTypes.map(type => <option value={type}>{type}</option>)}
+              </select>
+            </label>
+            <label>
+              image:
+              <input onChange={this.onChange} name="url" type="text" defaultValue={cat.url} required />
+            </label>
+            <label>
+              year:
+              <input onChange={this.onChange} name="year" defaultValue={cat.year} type="number" />
+            </label>
+            <label>
+              lives:
+              <input onChange={this.onChange} name="lives" type="number" min="0" max="9" defaultValue={cat.lives} />
+            </label>
+            <label>
+              sidekick?:
+              <input onChange={this.onChange} name="isSidekick" type="checkbox" defaultChecked={cat.isSidekick}/>
+            </label>
+          </fieldset>
+          <button type="submit">{(this.state.id) ? 'Edit' : 'Add'}</button>
+          
+        </form>
+      </div>
     );
   }
 }
