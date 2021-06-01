@@ -14,7 +14,7 @@ export async function getCat(id) {
 }
 
 export async function addCat(cat) {
-  const response = await request.prototype(URL).send(cat);
+  const response = await request.post(URL).send(cat);
   return response.body;
 }
 

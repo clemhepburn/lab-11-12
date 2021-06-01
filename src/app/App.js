@@ -4,6 +4,8 @@ import Footer from './Footer';
 import Home from '../home/Home';
 import CatList from '../list/CatList';
 import CatPage from '../detail/CatPage';
+import AddPage from '../add/AddPage';
+import EditPage from '../detail/EditPage';
 import {
   BrowserRouter as Router,
   Route,
@@ -34,12 +36,22 @@ class App extends Component {
                 )}
               />
 
+              <Route path="/cats/:id/edit" 
+                render={routerProps => 
+                  <EditPage {...routerProps} />
+                }
+              />
+
               <Route path="/cats/:id"
                 render={routerProps => (
                   <CatPage {...routerProps} />
                 )}
               />
 
+              <Route path="/add" exact={true}
+                render={routerProps => <AddPage {...routerProps}/>}
+              />
+              
               <Redirect to="/" />
 
             </Switch>

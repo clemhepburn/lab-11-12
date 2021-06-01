@@ -12,6 +12,7 @@ class Header extends Component {
         <nav className="nav">
           <Link to="/">home</Link>
           <Link to="/cats/">cats</Link>
+          <Link to="/add/">add</Link>
         </nav>
 
         
