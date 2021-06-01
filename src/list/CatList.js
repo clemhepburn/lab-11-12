@@ -22,6 +22,9 @@ export default class CatList extends Component {
         <ul>
           {this.state.cats && this.state.cats.map(cat => 
             <CatItem key={cat.id} data={cat}/>)}
+          <li className="add-cat">
+            <Link to="/add">add new</Link>
+          </li>
         </ul>
 
         <Link to="/">time to go home</Link>
