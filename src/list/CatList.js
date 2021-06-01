@@ -20,7 +20,7 @@ export default class CatList extends Component {
     return (
       <div className="cat-div">
         <ul>
-          {this.state.cats.map(cat => 
+          {this.state.cats && this.state.cats.map(cat => 
             <CatItem key={cat.id} data={cat}/>)}
         </ul>
 
