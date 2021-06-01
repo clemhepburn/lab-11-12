@@ -40,7 +40,7 @@ export default class CatPage extends Component {
           <button onClick={this.onDelete}>Delete</button>
         </div>
         
-        <Link to='/cats'>back</Link>
+        <Link to='/cats'>Edit</Link><Link to='/cats'>back</Link>
         
       </div>
     );
