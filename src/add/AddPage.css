@@ -1,0 +1,8 @@
+.AddPage fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddPage input {
+  margin: 0.75rem;
+}
