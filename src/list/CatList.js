@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import './CatList.css';
 
 export default class CatList extends Component {
+
+  async componentDidMount() {
+
+  }
+  
   render() {
     return (
       <div className="cat-div">
