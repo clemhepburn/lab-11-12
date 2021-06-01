@@ -21,14 +21,16 @@ export default class CatPage extends Component {
     const cat = this.state.cat;
 
     return (
-      <div className="cat-div">
+      <div className="CatPage">
         <div>
           <h2 className="page-title">{cat.name}</h2>
           <img src={cat.url} alt={cat.name}/>
-          <label>type: <span>{cat.type}</span></label>
-          <label>birth year: <span>{cat.year}</span></label>
-          <label>lives left: <span>{cat.lives}</span></label>
-          <label>is a sidekick?:<span>{(cat.isSidekick) ? 'Yes' : 'No'}</span></label>
+          <div className="info">
+            <label>type: <span>{cat.type}</span></label>
+            <label>birth year: <span>{cat.year}</span></label>
+            <label>lives left: <span>{cat.lives}</span></label>
+            <label>is a sidekick?:<span>{(cat.isSidekick) ? 'Yes' : 'No'}</span></label>
+          </div>
         </div>
         <Link to='/cats'>back</Link>
         

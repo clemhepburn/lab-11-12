@@ -9,7 +9,7 @@ class Header extends Component {
       <header className="Header">
 
         <h1>Famous Cats</h1>
-        <nav>
+        <nav className="nav">
           <Link to="/">home</Link>
           <Link to="/cats/">cats</Link>
         </nav>
