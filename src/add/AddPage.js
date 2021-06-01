@@ -58,11 +58,11 @@ export default class AddPage extends Component {
           </label>
           <label>
             year:
-            <input onChange={this.onChange} name="year" defaultValue="1996" type="number" required />
+            <input onChange={this.onChange} name="year" defaultValue="1996" type="number" />
           </label>
           <label>
             lives:
-            <input onChange={this.onChange} name="lives" type="number" min="0" max="9" defaultValue="9" required />
+            <input onChange={this.onChange} name="lives" type="number" min="0" max="9" defaultValue="9" />
           </label>
           <label>
             sidekick?:
