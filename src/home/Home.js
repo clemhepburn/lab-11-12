@@ -9,7 +9,7 @@ export default class Home extends Component {
       <div className="Home">
         <h2 className="page-title">Home Page</h2>
 
-        <Link to='/resources'>Let's see some cats</Link>
+        <Link to='/cats'>Let's see some cats</Link>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react';
 import './CatItem.css';
 
 export default class CatItem extends Component {
@@ -7,8 +8,10 @@ export default class CatItem extends Component {
     return (
       <div>
         <li className="CatItem">
-          <h3>{cat.name}</h3>
-          <img src={`..${cat.url}`} alt={cat.name}/>
+          <Link to={`/cats/${cat.id}`}>
+            <h3>{cat.name}</h3>
+            <img src={`..${cat.url}`} alt={cat.name}/>
+          </Link>
         </li>
       </div>
     );
