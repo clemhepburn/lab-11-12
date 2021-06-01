@@ -1,6 +1,7 @@
 import request from 'superagent';
 
-const URL = '/api/cats';
+const DB = 'https://sheltered-hamlet-81561.herokuapp.com';
+const URL = DB + '/api/cats';
 
 export async function getCats() {
   const response = await request.get(URL);
