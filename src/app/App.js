@@ -27,7 +27,7 @@ class App extends Component {
                 )}
               />
 
-              <Route path="/list" exact={true}
+              <Route path="/resources" exact={true}
                 render={routerProps => (
                   <CatList {...routerProps} />
                 )}
