@@ -24,6 +24,6 @@ export async function removeCat(id) {
 }
 
 export async function updateCat(cat) {
-  const response = await (await request.put(`${URL}/${cat.id}`)).send(cat);
+  const response = await request.put(`${URL}/${cat.id}`).send(cat);
   return response.body;
 }
